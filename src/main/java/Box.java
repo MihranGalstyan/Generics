@@ -1,39 +1,43 @@
+import java.util.List;
+
 /**
  * Created by Mihran Galstyan
  * All rights reserved
  */
-public class Box<S, F, I> {
-    private S firstType;
-    private F secondType;
-    private I thirdType;
+public class Box<T extends Number> {
+    private T[] array;
 
-    public S getFirstType() {
-        return firstType;
+    public Box(final T... array) {
+        this.array = array;
     }
 
-    public void setFirstType(final S firstType) {
-        this.firstType = firstType;
+    public T[] getArray() {
+        return array;
     }
 
-    public F getSecondType() {
-        return secondType;
+    public void setArray(final T[] array) {
+        this.array = array;
     }
 
-    public void setSecondType(final F secondType) {
-        this.secondType = secondType;
+    public double avg() {
+        double result = 0;
+        for (final T number : array) {
+            result += ((Number) number).doubleValue();
+        }
+        return result / array.length;
     }
 
-    public I getThirdType() {
-        return thirdType;
+    public int compare(Box<?> box) {
+        if (this.avg() > box.avg()) {
+            return 1;
+        } else if (this.avg() > box.avg()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
-    public void setThirdType(final I thirdType) {
-        this.thirdType = thirdType;
-    }
+    public void someMethod(List<? extends Number> numbers) {
 
-    public Box(final S sType, final F secondType, final I thirdType) {
-        this.firstType = sType;
-        this.secondType = secondType;
-        this.thirdType = thirdType;
     }
 }

@@ -10,9 +10,9 @@ class BoxTest {
 
     @Test
     void testBox() {
-        Box<String, Float, Integer> box1 = new Box<>("Text1", 10.4f, 5);
-        Box<String, Float, Integer> box2 = new Box<>("Text2", 20.3f, 4);
-        double result = box1.getSecondType() + box1.getThirdType() + box2.getSecondType() + box2.getThirdType();
-        assertEquals(39.7, result, 0.01);
+        Box<Integer> box1 = new Box<>(5, 10, 15);
+        Box<Integer> box2 = new Box<>(20, 25, 45);
+        double result = box1.avg() + box2.avg();
+        assertEquals(40.0, result, 0.001);
     }
 }
