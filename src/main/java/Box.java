@@ -38,6 +38,18 @@ public class Box<T extends Number> {
     }
 
     public void someMethod(List<? extends Number> numbers) {
+        // code here
+    }
 
+    public static <U> U getFirstElement(List<U> list) {
+        return list.get(0);
+    }
+
+    public static <U> void transfer(List<? extends U> src, List<? super U> dst) {
+//        for (final U u : src) {
+//            dst.add(u);
+//        }
+        dst.addAll(src);
+        src.clear();
     }
 }

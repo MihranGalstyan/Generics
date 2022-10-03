@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -10,9 +13,14 @@ class BoxTest {
 
     @Test
     void testBox() {
-        Box<Integer> box1 = new Box<>(5, 10, 15);
-        Box<Integer> box2 = new Box<>(20, 25, 45);
-        double result = box1.avg() + box2.avg();
-        assertEquals(40.0, result, 0.001);
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            numbers.add(i);
+        }
+        List<Integer> dst = new ArrayList<>();
+        Box.transfer(numbers,dst);
+        assertEquals(0, numbers.size());
+        assertEquals(10,dst.size());
+        assertEquals(8,dst.get(8));
     }
 }
